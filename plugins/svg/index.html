@@ -1,0 +1,272 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/" aria-current="page">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Plugins</p>
+        <h1>SVG</h1>
+      </header>
+      
+
+      <p>The plugin SVG <strong>is disabled by default</strong> so to enable it you have to import and use it in the <code>_config.js</code> file:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> svg <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/x/lume/plugins/svg.js&quot;</span>;
+  
+site.use(svg());
+</code></pre>
+<p>This plugin load <code>.svg</code> files and optimize them using <a href="https://github.com/svg/svgo">SVGO</a></p>
+
+    </main>
+  </body>
+</html>

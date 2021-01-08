@@ -1,0 +1,313 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layouts</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/" aria-current="page">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Creating pages</p>
+        <h1>Layouts</h1>
+      </header>
+      
+
+      <p>Layouts are templates that wrap around your content. They allow you to have the source code for your template in one place so you don’t have to repeat things like the navigation and footer on every page.</p>
+<p>Layout files are loaded from a special folder named <code>_includes</code>. This folder can contain not only layouts but other files, so a good practice is to save them in a subfolder like <code>_includes/layouts</code>.</p>
+<p>In the following page, we have defined the variable <code>layout</code> with the name of the template that we want to use:</p>
+<pre class="hljs"><code><span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">This</span> <span class="hljs-string">is</span> <span class="hljs-string">the</span> <span class="hljs-string">front</span> <span class="hljs-string">matter</span>
+<span class="hljs-attr">layout:</span> <span class="hljs-string">layouts/main.njk</span>
+<span class="hljs-meta">---
+</span>
+<span class="hljs-comment"># This is the page content</span>
+<span class="hljs-string">Here</span> <span class="hljs-string">you</span> <span class="hljs-string">can</span> <span class="hljs-string">write</span> <span class="hljs-string">markdown</span> <span class="hljs-string">content</span>
+
+</code></pre>
+<p><strong>Lume</strong> has support for many template engines. In this example, the layout file has the extension <code>njk</code>, used by the <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> template engine:</p>
+<pre class="hljs"><code><span class="hljs-meta">&lt;!doctype <span class="hljs-meta-keyword">html</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{{ title }}<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+      {{ content | safe }}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p><strong>Lume</strong> will search the file <code>_includes/layouts/main.njk</code> (note that all layouts are relative to <code>_includes</code> folder).</p>
+<p>The template can use any variable from the page, for example <code>title</code> to render the title, and <code>content</code> with the rendered markdown content of the page.</p>
+<h2>Layout front matter</h2>
+<p>Layouts can have also front matters with variables that will be merged with the variables from the page. Note that variables defined in the pages have precedence over the variables in the layouts. This means that you can set default values in the layouts and override them within the pages.</p>
+<p>A layout can be wrapped around another layout. Just set a <code>layout</code> variable in front matter. In this example, the following layout uses the <code>layouts/main.njk</code> layout as a wrapper.</p>
+<pre class="hljs"><code>---
+title: Default title
+language: en
+layout: layouts/main.njk
+---
+
+<span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;{{ language }}&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ title }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+
+  {{ content | safe }}
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+</code></pre>
+
+    </main>
+  </body>
+</html>

@@ -1,0 +1,307 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaml</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/" aria-current="page">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Plugins</p>
+        <h1>Yaml</h1>
+      </header>
+      
+
+      <p><a href="https://en.wikipedia.org/wiki/YAML">YAML</a> is format to save serialized data. It's <strong>enabled by default</strong> and is useful for pages with multiple pieces of text, like landing pages, guides, directories, etc.</p>
+<h2>Creating _data files</h2>
+<p>This format is useful for shared data, so you can create <code>_data.yml</code> or <code>_data/*.yml</code> files to save common variables.</p>
+<h2>Creating pages in YAML</h2>
+<p>This format can be used also to create pages, just add a file with <code>.yml</code> or <code>.yaml</code> extension to your site. For example:</p>
+<pre class="hljs"><code><span class="hljs-attr">title:</span> <span class="hljs-string">Welcome</span> <span class="hljs-string">to</span> <span class="hljs-string">my</span> <span class="hljs-string">page</span>
+<span class="hljs-attr">layout:</span> <span class="hljs-string">layouts/main.njk</span>
+<span class="hljs-attr">intro:</span> <span class="hljs-string">|
+  This is my first post using lume
+  I hope you like it!
+</span>
+<span class="hljs-attr">sections:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">Design</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">img/section1.jpg</span>
+    <span class="hljs-attr">text:</span> <span class="hljs-string">I</span> <span class="hljs-string">design</span> <span class="hljs-string">beautiful</span> <span class="hljs-string">and</span> <span class="hljs-string">accesible</span> <span class="hljs-string">websites</span>
+
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">Development</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">img/section2.jpg</span>
+    <span class="hljs-attr">text:</span> <span class="hljs-string">And</span> <span class="hljs-string">can</span> <span class="hljs-string">write</span> <span class="hljs-string">html</span> <span class="hljs-string">and</span> <span class="hljs-string">css</span> <span class="hljs-string">code!</span>
+</code></pre>
+<p>You will need a layout to render this page and generate the html:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{{ title }}<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ title }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{ intro }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+
+    {% for section in sections %}
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>{{ section.title }}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ section.image }}&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{ section.text }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    {% endfor %}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+
+    </main>
+  </body>
+</html>

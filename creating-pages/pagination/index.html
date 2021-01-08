@@ -1,0 +1,332 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/" aria-current="page">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Creating pages</p>
+        <h1>Pagination</h1>
+      </header>
+      
+
+      <p>The same source file can generate many output pages. This is useful to paginate elements, for example. To do that, create a javascript page exporting a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators">generator</a> as default.</p>
+<pre class="hljs"><code><span class="hljs-comment">//posts.tmpl.js</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> layout = <span class="hljs-string">&quot;layouts/page-list.njk&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> *(<span class="hljs-params">data, filters</span>) </span>{
+  <span class="hljs-keyword">const</span> pages = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> page <span class="hljs-keyword">of</span> pages) {
+    <span class="hljs-keyword">yield</span> {
+      <span class="hljs-attr">permalink</span>: <span class="hljs-string">`page-<span class="hljs-subst">${page}</span>`</span>,
+      <span class="hljs-attr">content</span>: <span class="hljs-string">`This is the page <span class="hljs-subst">${page}</span>`</span>
+    }
+  }
+}
+</code></pre>
+<p>In this example, the page returns a generator that create three pages. Every <code>yield</code> must return an unique <code>permalink</code> (to generate different pages without override each other), and can include other data needed to render the final html. Note also that you can use named exports for those variables that are common to all pages, like the layout.</p>
+<h2><code>paginate</code> helper</h2>
+<p>The <code>paginate</code> helper allows to create pages using an array of results. This is useful combined with the <code>search</code> helper to create paginated results. For example:</p>
+<pre class="hljs"><code><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> layout = <span class="hljs-string">&quot;layouts/post-list.njk&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> *(<span class="hljs-params">{ search, paginate }</span>) </span>{
+  <span class="hljs-keyword">const</span> posts = search.pages(<span class="hljs-string">&quot;posts&quot;</span>);
+  
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> page <span class="hljs-keyword">of</span> paginate(posts, { <span class="hljs-attr">permalink</span>: <span class="hljs-string">&quot;posts/page/%d/&quot;</span>, <span class="hljs-attr">size</span>: <span class="hljs-number">10</span> })) {
+    <span class="hljs-keyword">yield</span> page;
+  }
+}
+</code></pre>
+<p>This code use the helpers <code>search</code> and <code>paginate</code> to create as many pages as needed. First it search all pages tagged as &quot;posts&quot; and then paginate the result creating one page for every 10 posts. As you can see, the <code>paginate</code> helper accepts two arguments: an iterable and an object with the options. The available options are:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>size</code></td>
+<td><code>10</code></td>
+<td>Number of elements per page</td>
+</tr>
+<tr>
+<td><code>permalink</code></td>
+<td><code>page-%d</code></td>
+<td>The template to generate the permalink of each page. It's uses <code>sprintf</code> with the number of page as <code>%d</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>This helper returns a generator with which that you can iterate. Each item has the following values:</p>
+<pre class="hljs"><code><span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> page <span class="hljs-keyword">of</span> paginate(posts, { <span class="hljs-attr">permalink</span>: <span class="hljs-string">&quot;posts/page/%d/&quot;</span>, <span class="hljs-attr">size</span>: <span class="hljs-number">10</span> })) {
+  page.permalink;  <span class="hljs-comment">//Permalink of the page, for example &quot;post/page/1&quot;</span>
+  page.result;     <span class="hljs-comment">//Array with the results of this page</span>
+
+  <span class="hljs-comment">//Pagination info:</span>
+  page.pagination.page;         <span class="hljs-comment">//The current page</span>
+  page.pagination.totalPages;   <span class="hljs-comment">//Total pages</span>
+  page.pagination.totalResults; <span class="hljs-comment">//Total results</span>
+  page.pagination.previous;     <span class="hljs-comment">//The url of the previous page</span>
+  page.pagination.next;         <span class="hljs-comment">//The url of the next page</span>
+
+  <span class="hljs-keyword">yield</span> page;
+}
+</code></pre>
+
+    </main>
+  </body>
+</html>

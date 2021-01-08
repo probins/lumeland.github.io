@@ -1,0 +1,327 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filters</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/" aria-current="page">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Creating pages</p>
+        <h1>Filters</h1>
+      </header>
+      
+
+      <p>Filters are functions that can be applied to variables to transform content. Nunjucks template engine <a href="https://mozilla.github.io/nunjucks/templating.html#builtin-filters">has some builtin filters</a>, for example:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ &#x27;Welcome&#x27; | upper }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</code></pre>
+<p>Output:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>WELCOME<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</code></pre>
+<p>Lume allows to create your own filters to be used by all template engines. New filters must be registered in the <code>_config.js</code> file:</p>
+<pre class="hljs"><code><span class="hljs-comment">// Filter to prepend a 👍 to any text</span>
+site.filter(<span class="hljs-string">&quot;thumbsUp&quot;</span>, <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> <span class="hljs-string">&quot;👍 &quot;</span> + value);
+</code></pre>
+<p>Now this filter is available in your layouts:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ &#x27;Welcome&#x27; | upper | thumbsUp }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</code></pre>
+<p>Output:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>👍 WELCOME<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</code></pre>
+<h2>Builtin filters</h2>
+<p>Lume includes the following convenient preinstalled filters:</p>
+<h3>md</h3>
+<p>It's installed by the <code>markdown</code> plugin and allows to render markdown content to HTML. <a href="/plugins/markdown">More info</a></p>
+<h3>url</h3>
+<p>The filter <code>url</code> normalize paths with the location value that you have configured in <code>_config.js</code>. It's useful if your site is in a subdirectory or you want to generate absolute urls.</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;{{ &#x27;/about-us&#x27; | url }}&quot;</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Full url --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;{{ &#x27;/about-us&#x27; | url(true) }}&quot;</span>&gt;</span>
+</code></pre>
+<h3>attr</h3>
+<p>Provide a convenient way to work with html attributes.</p>
+<pre class="hljs"><code>---
+link:
+  title: Go to Github
+  href: https://github.com
+  target: _blank
+---
+
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> {{ <span class="hljs-attr">link</span> | <span class="hljs-attr">attr</span> | <span class="hljs-attr">safe</span> }}&gt;</span>
+</code></pre>
+<p>You can also filter the attributes names:</p>
+<pre class="hljs"><code>---
+link:
+  text: Go to Github
+  href: https://github.com
+  target: _blank
+  noopen: true
+  class:
+    - link
+    - link-external
+---
+
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> {{ <span class="hljs-attr">link</span> | <span class="hljs-attr">attr</span>(&#x27;<span class="hljs-attr">href</span>&#x27;, &#x27;<span class="hljs-attr">target</span>&#x27;, &#x27;<span class="hljs-attr">noopen</span>&#x27;, &#x27;<span class="hljs-attr">class</span>&#x27;) | <span class="hljs-attr">safe</span> }}&gt;</span>
+  {{ link.text }}
+<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<h2>Using the filters in javascript modules</h2>
+<p>If you're using javascript/typescript modules instead a template engine like Nunjucks, filters are passed as the second argument of your default exported function:</p>
+<pre class="hljs"><code>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data, filters</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;a href=&quot;<span class="hljs-subst">${filters.url(<span class="hljs-string">&#x27;/about-us&#x27;</span>)}</span>&quot;&gt;About us&lt;/a&gt;`</span>
+}
+</code></pre>
+
+    </main>
+  </body>
+</html>

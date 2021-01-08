@@ -1,0 +1,309 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modules</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/" aria-current="page">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Plugins</p>
+        <h1>Modules</h1>
+      </header>
+      
+
+      <p>Because Lume is built for Deno, it has native support for Javascript and Typescript.</p>
+<h2>Creating _data files</h2>
+<p>Create <code>_data.js</code> or <code>_data/*.js</code> (or the typescript equivalent <code>_data.ts</code> or <code>_data/*.ts</code>) files to save shared data.</p>
+<pre class="hljs"><code><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> users = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Oscar&quot;</span>,
+    <span class="hljs-attr">surname</span>: <span class="hljs-string">&quot;Otero&quot;</span>
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Michael&quot;</span>,
+    <span class="hljs-attr">surname</span>: <span class="hljs-string">&quot;Jackson&quot;</span>
+  },
+]
+</code></pre>
+<h2>Creating pages</h2>
+<p>To create pages using javascript or typescript, create a file with the extension <code>.tmpl.js</code> or <code>.tmpl.ts</code> (the <code>.tmpl</code> subextension is required to differentiate these pages from the javascript files that you want to execute in the browser). To export the variables, use named exports and to export the main content you can use the default export.</p>
+<pre class="hljs"><code><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> title = <span class="hljs-string">&quot;Welcome to my page&quot;</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> layout = <span class="hljs-string">&quot;layouts/main.njk&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&quot;This is my first post using lume. I hope you like it!&quot;</span>;
+</code></pre>
+<p>The default export can be a function, so it will be executed passing all the available data in the first argument and the filters in the second argument:</p>
+<pre class="hljs"><code><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> title = <span class="hljs-string">&quot;Welcome to my page&quot;</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> layout = <span class="hljs-string">&quot;layouts/main.njk&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (data, filters) =&gt; 
+  <span class="hljs-string">`&lt;h1&gt;<span class="hljs-subst">${data.title}</span>&lt;/h1&gt;
+  &lt;p&gt;This is my first post using lume. I hope you like it!&lt;/p&gt;
+  &lt;a href=&quot;<span class="hljs-subst">${filters.url(<span class="hljs-string">&#x27;/&#x27;</span>)}</span>&quot;&gt;Back to home&lt;/a&gt;`</span>
+</code></pre>
+<p>Javascript/Typescript allows to generate multiple pages from the same file, see <a href="/creating-pages/pagination/">Pagination</a> for more info.</p>
+<h2>Creating layouts</h2>
+<p>It's possible to create layouts using javascript/typescript. Just create <code>.js</code> or <code>.ts</code> files inside the <code>_includes</code> folder (here it's not necessary to prepend <code>.tmpl</code> to the extension).</p>
+<pre class="hljs"><code><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ({title, content}, filters) =&gt; 
+  <span class="hljs-string">`&lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;<span class="hljs-subst">${title}</span>&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      <span class="hljs-subst">${content}</span>
+    &lt;/body&gt;
+  &lt;/html&gt;`</span>
+</code></pre>
+
+    </main>
+  </body>
+</html>

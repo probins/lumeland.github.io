@@ -1,0 +1,313 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and collecting</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/" aria-current="page">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Creating pages</p>
+        <h1>Search and collecting</h1>
+      </header>
+      
+
+      <p>In the layouts, you have the <code>search</code> helper that allows to search other pages and directories. It's useful to build menus or other navigation stuff.</p>
+<h2>Searching pages</h2>
+<p>The function <code>search.pages()</code> returns an array of pages that you can filter by tags and sort.</p>
+<p>To search by tags, just include the tag names as first argument, separated by space. For example, to search all pages containing the tags <code>post</code> and <code>html</code>, you have to execute <code>search.pages(&quot;post html&quot;)</code>:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  {% for post in search.pages(&quot;post html&quot;) %}
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>{{ post.data.title }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  {% endfor %}
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+<p>The second argument is the sort. The available options are:</p>
+<ul>
+<li><code>date</code>: The default value. Sort the pages by date</li>
+<li><code>file</code>: Sort the pages by filename</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  {% for post in search.pages(&quot;post html&quot;, &quot;file&quot;) %}
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>{{ post.data.title }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  {% endfor %}
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+<h2>Searching next and previous page</h2>
+<p>If the current page belongs to a list of pages (for example, a list of pages under the same tag), you can get the previous and next page in this list. To do that we have the functions <code>search.previousPage()</code> and <code>search.nextPage()</code>. The syntax is the same as <code>search.pages()</code> but the first argument is the url of the current page. Let's see an example:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>More articles tagged as &quot;html&quot;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+{% set post = search.previousPage(url, &quot;html&quot;) %}
+
+{% if post %}
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;{{ post.data.url | url }}&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;prev&quot;</span>&gt;</span>← {{ post.data.title }}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+{% else %}
+
+{% set post = search.nextPage(url, &quot;html&quot;) %}
+
+{% if post %}
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;{{ post.data.url | url }}&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;next&quot;</span>&gt;</span>{{ post.data.title }} →<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+{% endif %}
+</code></pre>
+<h2>Searching folders</h2>
+<p>The function <code>folder</code> returns an object representing a folder. This is useful to get the data associated to that folder (stored in <code>_data</code>). For example:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>{{ search.folder(&quot;about&quot;).data.sectionTitle }}<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  {% for post in search.pages(&quot;about&quot;) %}
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>{{ post.data.title }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  {% endfor %}
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+
+    </main>
+  </body>
+</html>

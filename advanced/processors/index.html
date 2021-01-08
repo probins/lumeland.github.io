@@ -1,0 +1,312 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding custom processors</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/" aria-current="page">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Advanced</p>
+        <h1>Adding custom processors</h1>
+      </header>
+      
+
+      <p>A processor is a function to transform the content of pages and assets.
+Let's see an example of a processor to minify html pages:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">minifyHTML</span>(<span class="hljs-params">page</span>) </span>{
+  page.content = minify(page.content);
+}
+</code></pre>
+<p>If you want to use this processor to build your site, you can register it in the <code>_config.js</code> file:</p>
+<pre class="hljs"><code>site.process([<span class="hljs-string">&quot;.html&quot;</span>], minifyHTML);
+</code></pre>
+<p>Now, all HTML pages with be minified.</p>
+<h2>Access to page data</h2>
+<p>As you can see in the previous example, the function receives an object with the page (or asset). This means that you can access not only to the page content but to many other data:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">process</span>(<span class="hljs-params">page</span>) </span>{
+  page.content;  <span class="hljs-comment">// To get/set the content of the page</span>
+  page.src;      <span class="hljs-comment">// To get the info about the source file of this page</span>
+  page.dest;     <span class="hljs-comment">// To get/set the info about the destination of the page</span>
+  page.data;     <span class="hljs-comment">// To get the data of this page (ex: frontmatter)</span>
+  page.fullData; <span class="hljs-comment">// To get the full data of this page (frontmatter merged with _data)</span>
+  page.tags;     <span class="hljs-comment">// To get the tags assigned to the page</span>
+}
+</code></pre>
+<p>For example, let's say you only want to minify the pages with the value <code>minify</code> as <code>true</code>:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">minifyHTML</span>(<span class="hljs-params">page</span>) </span>{
+  <span class="hljs-keyword">if</span> (page.data.minify) {
+    page.content = minify(page.content);
+  }
+}
+</code></pre>
+<p>Note: processors are executed just after render the page (with a template engine).</p>
+<h2>Process assets</h2>
+<p>Note that processors only can transform pages or assets that are previously loaded. So if you want to process some assets (like css or javascript files), make sure that they are loaded before. See <a href="/advanced/loaders/">Loaders</a> for more information about how to register a new loader. Let's see an example of how to load and transform javascript files:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> lume <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/x/lume/mod.js&quot;</span>;
+<span class="hljs-keyword">import</span> textLoader <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/x/lume/loaders/text.js&quot;</span>;
+
+<span class="hljs-keyword">const</span> site = lume();
+
+<span class="hljs-comment">//Load javascript files as plain text:</span>
+site.loadAssets([<span class="hljs-string">&quot;.js&quot;</span>], textLoader);
+
+<span class="hljs-comment">//Process the javascript files</span>
+site.process([<span class="hljs-string">&quot;.js&quot;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">page</span>) </span>{
+  page.content = myBundler(page.content);
+
+  page.dest.path += <span class="hljs-string">&quot;.min&quot;</span>; <span class="hljs-comment">//append .min to the filename, so it will saved as example.min.js</span>
+})
+</code></pre>
+
+    </main>
+  </body>
+</html>

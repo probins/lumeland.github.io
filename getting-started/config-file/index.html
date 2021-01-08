@@ -1,0 +1,362 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/" aria-current="page">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Getting started</p>
+        <h1>Configuration</h1>
+      </header>
+      
+
+      <p><strong>Lume</strong> uses the <code>_config.js</code> file that gives you a lot of flexibility to customize how to build your site. This file must be placed in the site's root directory, and you can create it by your own or with the following command:</p>
+<pre class="hljs"><code>lume --init
+</code></pre>
+<p>The <code>_config.js</code> file is a javascript module that exports the lume instance. The minimal required code is:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> lume <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/x/lume/mod.js&quot;</span>;
+  
+<span class="hljs-keyword">const</span> site = lume();
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> site;
+</code></pre>
+<p>You can pass an object with configuration data to your site. This is an example with the default values:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> lume <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/x/lume/mod.js&quot;</span>;
+
+<span class="hljs-keyword">const</span> site = lume({
+  <span class="hljs-comment">// The &quot;src&quot; and &quot;dest&quot; folders are relative to this path</span>
+  <span class="hljs-attr">cwd</span>: Deno.cwd(),
+
+  <span class="hljs-comment">// The source directory of your site</span>
+  <span class="hljs-comment">// You can override the value from CLI with `--src=new-value`</span>
+  <span class="hljs-attr">src</span>: <span class="hljs-string">&quot;.&quot;</span>,
+
+  <span class="hljs-comment">// The destination output of the site</span>
+  <span class="hljs-comment">// You can override the value from CLI with `--dest=new-value`</span>
+  <span class="hljs-attr">dest</span>: <span class="hljs-string">&quot;_site&quot;</span>,
+
+  <span class="hljs-comment">// The base location where the site will be published.</span>
+  <span class="hljs-comment">// Useful to generate absolute urls or if your site is published in a subfolder</span>
+  <span class="hljs-comment">// for example: https://username.github.io/project-name/</span>
+  <span class="hljs-comment">// You can override the value from CLI with `--location=new-value`</span>
+  <span class="hljs-attr">location</span>: <span class="hljs-keyword">new</span> URL(<span class="hljs-string">&quot;http://localhost&quot;</span>),
+
+  <span class="hljs-comment">// Set true to build the site in development mode.</span>
+  <span class="hljs-comment">// You can override the value from CLI with `--dev`</span>
+  <span class="hljs-attr">dev</span>: <span class="hljs-literal">false</span>
+
+  <span class="hljs-comment">// To generate pretty urls, for example `/about-us/` instead `/about-us.html`.</span>
+  <span class="hljs-comment">// Set `false` to disable it.</span>
+  <span class="hljs-attr">prettyurls</span>: <span class="hljs-literal">false</span>,
+
+  <span class="hljs-comment">// Local server configuration</span>
+  <span class="hljs-attr">server</span>: {
+    <span class="hljs-comment">// You can override the value from CLI with `--port`</span>
+    <span class="hljs-attr">port</span>: <span class="hljs-number">3000</span>,
+
+    <span class="hljs-comment">// The HTML page to display for 404 errors.</span>
+    <span class="hljs-comment">// You can use, for example &quot;/index.html&quot; if you are building a webapp with dynamic urls</span>
+    <span class="hljs-attr">page404</span>: <span class="hljs-string">&quot;/404.html&quot;</span>,
+  }
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> site;
+</code></pre>
+<h2>Installing plugins</h2>
+<p>Plugins add extra functionality or support for new formats. There are some basic plugins installed by default (like support for <code>markdown</code>, <code>yaml</code> or <code>json</code> formats), but there are other plugins that you can enable. For example, to add the <code>svg</code> plugin (that optimize svg files), you have to import and load in the config file:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> lume <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/x/lume/mod.js&quot;</span>;
+<span class="hljs-keyword">import</span> svg <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/x/lume/plugins/svg.js&quot;</span>;
+  
+<span class="hljs-keyword">const</span> site = lume();
+
+<span class="hljs-comment">//Add svg plugin</span>
+site.use(svg());
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> site;
+</code></pre>
+<h2>Copy static files</h2>
+<p>Static files are files that don't have to be processed, like images, pdfs, videos or audios. So it's better (and faster) to copy directly these files to dest folder with the <code>copy</code> function:</p>
+<pre class="hljs"><code><span class="hljs-comment">// Copy the &quot;img&quot; folder to _site/img</span>
+site.copy(<span class="hljs-string">&quot;img&quot;</span>);
+
+<span class="hljs-comment">// Copy the file to _site/favicon.ico</span>
+site.copy(<span class="hljs-string">&quot;favicon.ico&quot;</span>);
+</code></pre>
+<p>The path is relative to the root's of the src directory and the files and folders are copies as is, maintaining the same folder structure. If you want to change the output directory, use the second argument:</p>
+<pre class="hljs"><code><span class="hljs-comment">// Copy the &quot;img&quot; folder to _site/images</span>
+site.copy(<span class="hljs-string">&quot;img&quot;</span>, <span class="hljs-string">&quot;images&quot;</span>);
+
+<span class="hljs-comment">// Copy the &quot;static-files/favicons/favicon.ico&quot; to _site/favicon.ico</span>
+site.copy(<span class="hljs-string">&quot;static-files/favicons/favicon.ico&quot;</span>, <span class="hljs-string">&quot;favicon.ico&quot;</span>);
+</code></pre>
+<h2>Ignore files and directories</h2>
+<p>By default all files and folders starting with <code>.</code> or <code>_</code> are ignored. But you can add other files or folders using the <code>ignore()</code> function:</p>
+<pre class="hljs"><code>site.ignore(<span class="hljs-string">&quot;README.md&quot;</span>, <span class="hljs-string">&quot;CHANGELOG.md&quot;</span>, <span class="hljs-string">&quot;node_modules&quot;</span>);
+</code></pre>
+<p>Note: <code>node_modules</code> folder is ignored by default too.</p>
+<h2>Template filters</h2>
+<p>Template filters are functions that you can use in your layouts to modify content. Some template engines like Nunjucks <a href="https://mozilla.github.io/nunjucks/templating.html#builtin-filters">have several builtin filters</a>, but you can add your owns:</p>
+<pre class="hljs"><code><span class="hljs-comment">// Filter to convert a string to uppercase</span>
+site.filter(<span class="hljs-string">&quot;uppercase&quot;</span>, <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> value.toUpperCase());
+</code></pre>
+<p>Now, use it in your Nunjucks templates:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ title | uppercase }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</code></pre>
+<p>If your filter is asynchronous, set <code>true</code> to the third argument:</p>
+<pre class="hljs"><code>site.filter(<span class="hljs-string">&quot;async_filter&quot;</span>, <span class="hljs-keyword">async</span> (value) =&gt; value, <span class="hljs-literal">true</span>);
+</code></pre>
+<p>Note that not all template engines support async filters.</p>
+
+    </main>
+  </body>
+</html>

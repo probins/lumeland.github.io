@@ -1,0 +1,295 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding custom loaders</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/" aria-current="page">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Advanced</p>
+        <h1>Adding custom loaders</h1>
+      </header>
+      
+
+      <p>Loaders are functions that read and return the content of files. There are different loaders for different formats, like <code>json</code>, <code>yaml</code>, javascript modules or plain text. Creating a custom loader is really easy, you only have to create a function that reads the content of a file and return an object with that content.</p>
+<p>Let's say you want to add support for <code>toml</code> format, using the <a href="https://deno.land/std@0.83.0/encoding#toml">encoding/toml</a> Deno std module:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { parse } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/std@0.83.0/encoding/toml.ts&quot;</span>;
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tomlLoader</span>(<span class="hljs-params">path</span>) </span>{
+  <span class="hljs-keyword">const</span> content = <span class="hljs-keyword">await</span> Deno.readTextFile(path);
+  <span class="hljs-keyword">return</span> parse(content);
+}
+</code></pre>
+<p>If you want to use this loader to build your site, just register it in the <code>_config.js</code> file, specifying the file extensions to apply:</p>
+<pre class="hljs"><code>site.loadData([<span class="hljs-string">&quot;.toml&quot;</span>], tomlLoader);
+</code></pre>
+<p>Now you can use the TOML format to save data files (<code>_data.toml</code> or <code>_data/*.toml</code>).</p>
+<p>To use this format to generate pages, use the <code>loadPages</code> function:</p>
+<pre class="hljs"><code>site.loadPages([<span class="hljs-string">&quot;.toml&quot;</span>], tomlLoader);
+</code></pre>
+<p>Now, any <code>*.toml</code> file in your site will be loaded and used to render a page. For example, the file <code>/about-us.toml</code> will be loaded and saved as <code>/about-us/index.html</code> (unless you configure a different name using the <code>permalink</code> value.</p>
+<p>Instead html pages, you may want to use this loader to load toml files and save them with the same extension (instead html). To do that, you must register it with <code>loadAssets</code>:</p>
+<pre class="hljs"><code>site.loadAssets([<span class="hljs-string">&quot;.toml&quot;</span>], tomlLoader);
+</code></pre>
+<p>Now, the <code>*.toml</code> files are loaded and saved as <code>toml</code>. The function <code>loadAssets</code> is useful to load assets files like <code>css</code>, <code>js</code>, <code>svg</code> that you want to transform (bundle, minify...) and save them keeping the same extension, instead rename to html.</p>
+<p><strong>Note:</strong> you can't use the same extension to generate pages and assets, so a way to have support for both is adding a subextension (like <code>tmpl</code>) for pages. Example:</p>
+<pre class="hljs"><code><span class="hljs-comment">//Use *.tmpl.toml extension for pages</span>
+site.loadPages([<span class="hljs-string">&quot;.tmpl.toml&quot;</span>], tomlLoader);
+
+<span class="hljs-comment">//And any other *.toml files for assets</span>
+site.loadAssets([<span class="hljs-string">&quot;.toml&quot;</span>], tomlLoader);
+</code></pre>
+<p>This is the same strategy used for javascript/typescript modules (<code>*.tmpl.js</code> for pages and <code>*.js</code> for javascript assets).</p>
+
+    </main>
+  </body>
+</html>

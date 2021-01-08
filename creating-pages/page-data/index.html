@@ -1,0 +1,295 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page data</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/" aria-current="page">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Creating pages</p>
+        <h1>Page data</h1>
+      </header>
+      
+
+      <p>Pages can contain arbitrary data. In markdown files, the data is defined in the <strong>front matter</strong> block, a block delimited by two triple-dashed lines containing <a href="https://yaml.org/">YAML</a> code. Let's see an example:</p>
+<pre class="hljs"><code><span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">This</span> <span class="hljs-string">is</span> <span class="hljs-string">the</span> <span class="hljs-string">front</span> <span class="hljs-string">matter</span>
+<span class="hljs-attr">permalink:</span> <span class="hljs-string">custom-url.html</span>
+<span class="hljs-meta">---
+</span>
+<span class="hljs-comment"># This is the page content</span>
+<span class="hljs-string">Here</span> <span class="hljs-string">you</span> <span class="hljs-string">can</span> <span class="hljs-string">write</span> <span class="hljs-string">markdown</span> <span class="hljs-string">content</span>
+
+</code></pre>
+<p>In this example, the frontmatter contains two variables: <code>title</code>, that can be used as the page title, and <code>permalink</code>, a variable to customize the output file name of the page. Below the front matter you can write the markdown with the page content.</p>
+<h2>Standard variables</h2>
+<p>There are some special variables that <strong>lume</strong> can understand:</p>
+<ul>
+<li><code>permalink</code>: To change the output path of the page</li>
+<li><code>date</code>: By default it's the file creation date but you can override with this variable (or prepending it to the filename). This value is used to sort the pages in a list.</li>
+<li><code>layout</code>: To define the layout that is used to render the page. See <a href="/creating-pages/layouts/">Layouts</a></li>
+<li><code>draft</code>: To ignore pages in production environment, but the page is visible during development.</li>
+<li><code>tags</code>: Tags are used to group pages. See <a href="/creating-pages/tags/">Tags</a></li>
+<li><code>templateEngine</code>: To override the template engine used to render the page. See <a href="/advanced/template-engines/">Template engines</a></li>
+</ul>
+<pre class="hljs"><code><span class="hljs-meta">---</span>
+<span class="hljs-attr">permalink:</span> <span class="hljs-string">/welcome.html</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2021-01-01</span>
+<span class="hljs-attr">layout:</span> <span class="hljs-string">layouts/post.njk</span>
+<span class="hljs-attr">draft:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">tags:</span> <span class="hljs-string">post</span>
+<span class="hljs-meta">---
+</span></code></pre>
+
+    </main>
+  </body>
+</html>

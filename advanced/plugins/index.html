@@ -1,0 +1,306 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating plugins</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/" aria-current="page">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Advanced</p>
+        <h1>Creating plugins</h1>
+      </header>
+      
+
+      <p>Lume is an static site generator that can be extended easily adding more <a href="/advanced/loaders/">loaders</a>, <a href="/advanced/processors/">processors</a>, <a href="/advanced/engines/">engines</a> etc. Plugins provide an easy interface to extend Lume without write too much code in the <code>_config.js</code> file.</p>
+<p>A plugin is just a function that receives a lume instance in the first argument, in order to configure and register new elements to it.</p>
+<p>For example, to register a new template engine, you have to create an instance and decide the extensions to apply, <a href="/advanced/engines/">as you can see in the docs</a>:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> CustomEngine <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://lume.land/x/my-custom-engine/mod.js&quot;</span>;
+
+<span class="hljs-keyword">const</span> myEngine = <span class="hljs-keyword">new</span> CustomEngine(site);
+site.engine([<span class="hljs-string">&quot;.me&quot;</span>], myEngine);
+</code></pre>
+<p>You can encapsulate this code in a plugin:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> CustomEngine <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://lume.land/x/my-custom-engine/mod.js&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">site</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> myEngine = <span class="hljs-keyword">new</span> CustomEngine(site);
+
+    site.engine([<span class="hljs-string">&quot;.me&quot;</span>], myEngine);
+  };
+}
+</code></pre>
+<p>So in your <code>_config.js</code> you only have to import the plugin and use it:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> myPlugin <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://lume.land/x/my-lume-plugin/mod.js&quot;</span>;
+
+site.use(myPlugin());
+</code></pre>
+<p>To pass configuration options to your plugin, just add arguments to the functions returning the plugin. For example, let's say you want to customize the file extensions to apply the template engine:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> CustomEngine <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://lume.land/x/my-custom-engine/mod.js&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">ext = [<span class="hljs-string">&quot;.me&quot;</span>]</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">site</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> myEngine = <span class="hljs-keyword">new</span> CustomEngine(site);
+
+    site.engine(ext, myEngine);
+  };
+}
+</code></pre>
+<p>Now, in your <code>_config.js</code> file you can customize the extensions:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> myPlugin <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://lume.land/x/my-lume-plugin/mod.js&quot;</span>;
+
+site.use(myPlugin([<span class="hljs-string">&quot;.me&quot;</span>, <span class="hljs-string">&quot;.mo&quot;</span>]));
+</code></pre>
+
+    </main>
+  </body>
+</html>

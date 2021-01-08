@@ -1,0 +1,318 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/" aria-current="page">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Advanced</p>
+        <h1>Scripts</h1>
+      </header>
+      
+
+      <p>Lume includes a simple script runner that you can use to execute commands or custom functions. To create a new script, use the function  <code>script()</code> in your <code>_config.js</code> file:</p>
+<pre class="hljs"><code>site.script(<span class="hljs-string">&quot;deploy&quot;</span>, <span class="hljs-string">&quot;rsync -r _site/** user@server.com:/var/www/&quot;</span>);
+</code></pre>
+<p>Now, you can run this script from CLI with <code>lume --run deploy</code>.</p>
+<h2>Running multiple commands</h2>
+<p>You can create a script to execute multiple commands, <strong>one after other.</strong> There are two ways to do that: by adding more arguments or joining the different commands with <code>&amp;&amp;</code>. For example:</p>
+<pre class="hljs"><code>site.script(
+  <span class="hljs-string">&quot;save-site&quot;</span>,
+  <span class="hljs-string">&quot;gzip -r _site site.gz&quot;</span>,
+  <span class="hljs-string">&quot;scp site.gz user@host.com:/home/user/archive&quot;</span>
+);
+
+<span class="hljs-comment">// Alternative way using &quot;&amp;&amp;&quot;</span>
+site.script(<span class="hljs-string">&quot;save-site&quot;</span>, <span class="hljs-string">&quot;gzip -r _site site.gz &amp;&amp; scp site.gz user@host.com:/home/user/archive&quot;</span>);
+</code></pre>
+<p>Now, by running <code>lume --run save-site</code>, these two commands will be executed.</p>
+<p>If you don't need to execute the commands in serie but in <strong>parallel</strong>, use an array of commands or the character <code>&amp;</code>:</p>
+<pre class="hljs"><code>site.script(
+  <span class="hljs-string">&quot;compress-assets&quot;</span>, [
+  <span class="hljs-string">&quot;gzip -r _site/images images.gz&quot;</span>,
+  <span class="hljs-string">&quot;gzip -r _site/videos videos.gz&quot;</span>
+]);
+
+<span class="hljs-comment">// Alternative way using the character &quot;&amp;&quot;</span>
+site.script(<span class="hljs-string">&quot;compress-assets&quot;</span>, <span class="hljs-string">&quot;gzip -r _site/images images.gz &amp; gzip -r _site/videos videos.gz&quot;</span>);
+</code></pre>
+<h2>Compose scripts</h2>
+<p>Scripts can execute other scripts, just use the name of a registered script as a command in another script. For example:</p>
+<pre class="hljs"><code><span class="hljs-comment">//Create two scripts</span>
+site.script(<span class="hljs-string">&quot;compress&quot;</span>, <span class="hljs-string">&quot;gzip -r _site site.gz&quot;</span>);
+site.script(<span class="hljs-string">&quot;upload&quot;</span>, <span class="hljs-string">&quot;scp site.gz user@host.com:/home/user/archive&quot;</span>);
+
+<span class="hljs-comment">//Create a third scripts that runs the two previous scripts</span>
+site.script(<span class="hljs-string">&quot;compress-and-upload&quot;</span>, <span class="hljs-string">&quot;compress&quot;</span>, <span class="hljs-string">&quot;upload&quot;</span>);
+</code></pre>
+<h2>Custom functions</h2>
+<p>Scripts not only can execute cli commands but also javascript functions. For example:</p>
+<pre class="hljs"><code>site.script(<span class="hljs-string">&quot;add-date-published&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+  Deno.writeTextFileSync(
+    site.dest(<span class="hljs-string">&quot;published.txt&quot;</span>),
+    <span class="hljs-string">`Site published at: <span class="hljs-subst">${<span class="hljs-built_in">Date</span>.now()}</span>`</span>
+  );
+})
+</code></pre>
+<h2>Running scripts from javascript</h2>
+<p>To run a script from javascript instead CLI, use the <code>site.run()</code> function:</p>
+<pre class="hljs"><code><span class="hljs-comment">//Create the script</span>
+site.script(<span class="hljs-string">&quot;compress&quot;</span>, <span class="hljs-string">&quot;gzip -r _site site.gz&quot;</span>);
+
+<span class="hljs-comment">//Run it</span>
+site.run(<span class="hljs-string">&quot;compress&quot;</span>);
+</code></pre>
+
+    </main>
+  </body>
+</html>

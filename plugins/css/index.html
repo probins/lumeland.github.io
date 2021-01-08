@@ -1,0 +1,293 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <a href="/">
+        <img src="/lume.png" alt="Lume logo">
+      </a>
+
+      <ul>
+        
+        <li>
+          <strong>Getting started</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/getting-started/installation/">Installation</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/command-line/">Command line usage</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/getting-started/config-file/">Configuration</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Creating pages</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/creating-pages/page-files/">Page files</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/page-data/">Page data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/layouts/">Layouts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/shared-data/">Shared data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/tags/">Tags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/data/">Extra data</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/searching/">Search and collecting</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/pagination/">Pagination</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/creating-pages/filters/">Filters</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Plugins</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/plugins/about-plugins/">About plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/bundler/">Bundler</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/css/" aria-current="page">CSS</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/dom/">DOM</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/eta/">Eta</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/json/">JSON</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/jsx/">JSX</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/markdown/">Markdown</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/modules/">Modules</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/nunjucks/">Nunjucks</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/pug/">Pug</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/search/">Search</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/svg/">SVG</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/plugins/yaml/">Yaml</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+        <li>
+          <strong>Advanced</strong>
+          <ul>
+          
+            <li>
+              
+              <a href="/advanced/engines/">Template engines</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/events/">Events</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/flags/">Flags</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/loaders/">Adding custom loaders</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/plugins/">Creating plugins</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/processors/">Adding custom processors</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/scripts/">Scripts</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/advanced/template-engines/">Configure template engines</a>
+              
+            </li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <main class="main">
+      
+      <header>
+        <p>Plugins</p>
+        <h1>CSS</h1>
+      </header>
+      
+
+      <p>The CSS plugin <strong>is disabled by default</strong> so to enable it you have to import and use it in the <code>_config.js</code> file:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> css <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/x/lume/plugins/css.js&quot;</span>;
+  
+site.use(css());
+</code></pre>
+<p>This plugin loads CSS files and use <a href="https://postcss.org/">PostCSS</a> with <a href="https://github.com/postcss/postcss-deno-import">postcss-import</a> and <a href="https://github.com/lumeland/postcss-nesting">postcss-nesting</a> to bundle css. It also resolves the local <code>@imports</code> looking in the <code>_includes</code> folder.</p>
+<pre class="hljs"><code><span class="hljs-comment">/* Import the css file from _includes/css/reset.css */</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;css/reset.css&quot;</span>;
+
+<span class="hljs-comment">/* Import the relative css file */</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;./variables.css&quot;</span>;
+</code></pre>
+<p>You can configure this plugins with the following options:</p>
+<ul>
+<li><code>postcssPlugins</code>: Array with the PostCSS plugins that you want to use</li>
+<li><code>map</code>: Set <code>true</code> to generate a source map file that will be saved in the same place but with the <code>.map</code> extension appended. For example, the file <code>my/styles.css</code> will generate the sourcemap file <code>my/styles.css.map</code>.</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> css <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/x/lume/plugins/css.js&quot;</span>;
+<span class="hljs-keyword">import</span> autoprefixer <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://esm.sh/autoprefixer&quot;</span>;
+<span class="hljs-keyword">import</span> csso <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://esm.sh/postcss-csso&quot;</span>;
+
+site.use(css({
+  <span class="hljs-attr">postcssPlugins</span>: [ autoprefixer(), csso() ],
+  <span class="hljs-attr">map</span>: <span class="hljs-literal">true</span>
+}));
+</code></pre>
+<p><strong>Note:</strong> <a href="https://github.com/postcss/postcss-deno-import">postcss-import</a> plugin is executed always, even if it's not included in <code>postcssPlugins</code>.</p>
+
+    </main>
+  </body>
+</html>
